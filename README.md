@@ -36,7 +36,7 @@
 
 ### Controllers
 - usersController
-- productsConntroller
+- productsController
 
 ### Endpoints
 
@@ -85,6 +85,5 @@
     password varchar(1000) not null
   );
 ```
-
 
 ## FRONT-END
