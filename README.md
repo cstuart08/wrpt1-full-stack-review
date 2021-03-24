@@ -19,7 +19,7 @@
 - product reviews & ratings
 
 ## DEPENDENCIES
-- axiios
+- axios
 - express
 - massive
 - express-session
