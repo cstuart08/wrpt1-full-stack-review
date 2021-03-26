@@ -35,8 +35,8 @@
 ## SERVER
 
 ### Controllers
-- usersController
-- productsController
+- authController
+- productController
 
 ### Endpoints
 
@@ -45,11 +45,11 @@
 - get a single product => GET '/api/products/:id'
 - get cart products => POST '/api/products'
 
-#### Users
+#### Auth
 - register a user => POST '/api/register'
 - login a user => POST '/api/login'
 - logout a user => DELETE '/api/logout'
-- delete a user => DELETE '/api/delete'
+- delete a user => POST '/api/delete'
 
 ## DATABASE
 
@@ -61,19 +61,20 @@
 #### Products
 ``` SQL
   create table products (
-  product_id serial primary key not null,
-  description varchar(1000) not null,
-  price decimal not null,
-  category varchar(100) not null
+    product_id serial primary key not null,
+    description varchar(1000) not null,
+    price decimal not null,
+    category varchar(100) not null,
+    name varchar(100)
   );
 ```
 
 #### Product Images
 ``` SQL
   create table product_images (
-  product_images_id serial primary key not null,
-  product_id references products (product_id) not null,
-  url text not null
+    product_images_id serial primary key not null,
+    product_id integer references products(product_id) not null,
+    url text not null
   );
 ```
 
@@ -87,3 +88,11 @@
 ```
 
 ## FRONT-END
+
+## Routes
+- path="/" => Landing
+- path="/shop" => Shop
+   - path="/shop/:category" => Category Shop
+- path="/cart" => Cart
+- path="/product/:product_id" => Product Display Page
+- path="/settings" => Settings
